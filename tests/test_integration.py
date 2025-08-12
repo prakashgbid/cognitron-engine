@@ -1,7 +1,7 @@
-"""Integration tests for deep_reasoner"""
+"""Integration tests for memcore"""
 
 import pytest
-from deep_reasoner import DeepReasoner
+from memcore import DeepReasoner
 
 
 @pytest.mark.integration

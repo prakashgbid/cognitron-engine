@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Advanced usage example for deep_reasoner"""
+"""Advanced usage example for memcore"""
 
 import asyncio
-from deep_reasoner import DeepReasoner
+from memcore import DeepReasoner
 
 
 async def advanced_example():

@@ -1,7 +1,7 @@
-"""Tests for deep_reasoner"""
+"""Tests for memcore"""
 
 import pytest
-from deep_reasoner import DeepReasoner
+from memcore import DeepReasoner
 
 
 class TestDeepReasoner:

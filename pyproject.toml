@@ -3,14 +3,14 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "deep-reasoner"
+name = "cognitron"
 version = "0.1.0"
-description = "Extracted from OSA - Autonomous AI System"
+description = "Advanced reasoning engine for complex problem-solving and analysis"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "OSA Contributors", email = "osa@omnimind.ai"},
+    {name = "Cognitron Contributors", email = "hello@cognitron.ai"},
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -20,10 +20,10 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/prakashgbid/deep-reasoner"
-Documentation = "https://prakashgbid.github.io/deep-reasoner"
-Repository = "https://github.com/prakashgbid/deep-reasoner"
-Issues = "https://github.com/prakashgbid/deep-reasoner/issues"
+Homepage = "https://github.com/prakashgbid/cognitron-engine"
+Documentation = "https://prakashgbid.github.io/cognitron-engine"
+Repository = "https://github.com/prakashgbid/cognitron-engine"
+Issues = "https://github.com/prakashgbid/cognitron-engine/issues"
 
 [tool.black]
 line-length = 100

@@ -1,4 +1,4 @@
-"""Setup configuration for deep-reasoner"""
+"""Setup configuration for Cognitron"""
 
 from setuptools import setup, find_packages
 
@@ -6,17 +6,14 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="deep-reasoner",
+    name="cognitron",
     version="0.1.0",
-    author="OSA Contributors",
-    author_email="osa@omnimind.ai",
-    description="
-    OSA's continuous thinking engine that enables human-like
-    deep reasoning, multi-context awareness, and adaptive problem-solving.
-    ",
+    author="Cognitron Contributors",
+    author_email="hello@cognitron.ai",
+    description="Advanced reasoning engine that enables deep analysis, multi-context awareness, and adaptive problem-solving.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/prakashgbid/deep-reasoner",
+    url="https://github.com/prakashgbid/cognitron-engine",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     classifiers=[

@@ -1,7 +1,8 @@
+import pendulum
+import orjson
 """Core implementation of deep-reasoner"""
 
 import asyncio
-import json
 import hashlib
 from typing import Dict, List, Optional, Any, Set, Tuple
 from datetime import datetime, timedelta
@@ -16,7 +17,7 @@ import random
 
 
 class ThoughtType(Enum):
-    """Types of thoughts OSA can have"""
+    """Types of thoughts MemCore can have"""
     ANALYSIS = 'analysis'
     PLANNING = 'planning'
     PROBLEM_SOLVING = 'problem_solving'
@@ -34,7 +35,7 @@ class ThoughtType(Enum):
     VALIDATION = 'validation'
 @dataclass
 class Thought:
-    """Represents a single thought in OSA's mind"""
+    """Represents a single thought in MemCore's mind"""
     id: str
     type: ThoughtType
     content: str
@@ -53,7 +54,7 @@ class Thought:
         return self.type == ThoughtType.BLOCKER_DETECTION and (not self.resolved)
 @dataclass
 class Context:
-    """Represents a context or scope OSA is working within"""
+    """Represents a context or scope MemCore is working within"""
     id: str
     name: str
     description: str
@@ -100,7 +101,7 @@ class WorkItem:
     result: Optional[Any] = None
 class ContinuousThinkingEngine:
     """
-    OSA's continuous thinking engine that enables human-like
+    MemCore's continuous thinking engine that enables human-like
     deep reasoning, multi-context awareness, and adaptive problem-solving.
     """
 
@@ -122,7 +123,7 @@ class ContinuousThinkingEngine:
         self.monitoring_tasks: Dict[str, Any] = {}
         self.problem_patterns = {'divide_conquer': self._divide_and_conquer, 'reverse_engineer': self._reverse_engineer, 'lateral_thinking': self._lateral_thinking, 'first_principles': self._first_principles, 'analogical': self._analogical_reasoning}
         self.thinking_config = {'max_depth': 10, 'parallel_thoughts': 20, 'context_switch_threshold': 0.3, 'blocker_timeout': 60, 'connection_threshold': 0.6, 'delegation_threshold': 5}
-        self.logger = logging.getLogger('OSA-Thinking')
+        self.logger = logging.getLogger('MemCore-Thinking')
         self._start_thinking_loop()
 
     def _start_thinking_loop(self):
@@ -146,7 +147,7 @@ class ContinuousThinkingEngine:
         if not context:
             context = self._create_context(f'Thinking about {topic}')
         root_thought = self._create_thought(type=ThoughtType.ANALYSIS, content=f'Analyzing: {topic}', context=context.id, depth=0)
-        chain = ReasoningChain(id=hashlib.md5(f'{topic}{datetime.now()}'.encode()).hexdigest()[:8], root_thought=root_thought.id, thoughts=[root_thought.id])
+        chain = ReasoningChain(id=hashlib.md5(f'{topic}{pendulum.now()}'.encode()).hexdigest()[:8], root_thought=root_thought.id, thoughts=[root_thought.id])
         await self._think_recursively(thought=root_thought, chain=chain, context=context, remaining_depth=depth)
         chain.conclusion = self._synthesize_reasoning(chain)
         chain.confidence = self._calculate_chain_confidence(chain)
@@ -171,7 +172,7 @@ class ContinuousThinkingEngine:
 
     def _create_thought(self, type: ThoughtType, content: str, context: str, depth: int, parent_thought: Optional[str]=None) -> Thought:
         """Create a new thought"""
-        thought = Thought(id=hashlib.md5(f'{content}{datetime.now()}'.encode()).hexdigest()[:8], type=type, content=content, context=context, depth=depth, parent_thought=parent_thought)
+        thought = Thought(id=hashlib.md5(f'{content}{pendulum.now()}'.encode()).hexdigest()[:8], type=type, content=content, context=context, depth=depth, parent_thought=parent_thought)
         if type == ThoughtType.BLOCKER_DETECTION:
             thought.priority = 9
         elif type == ThoughtType.PROBLEM_SOLVING:
@@ -186,7 +187,7 @@ class ContinuousThinkingEngine:
 
     def _create_context(self, name: str, parent: Optional[str]=None) -> Context:
         """Create a new context"""
-        context = Context(id=hashlib.md5(f'{name}{datetime.now()}'.encode()).hexdigest()[:8], name=name, description=f'Context for {name}', parent_context=parent)
+        context = Context(id=hashlib.md5(f'{name}{pendulum.now()}'.encode()).hexdigest()[:8], name=name, description=f'Context for {name}', parent_context=parent)
         self.contexts[context.id] = context
         if parent and parent in self.contexts:
             self.contexts[parent].sub_contexts.append(context.id)
@@ -257,7 +258,7 @@ class ContinuousThinkingEngine:
     async def lead_and_delegate(self, task: str, resources: List[str]) -> Dict[str, Any]:
         """
         Lead a complex task by breaking it down and delegating.
-        This implements OSA's leadership capabilities.
+        This implements MemCore's leadership capabilities.
         """
         self.logger.info(f'👔 Leading task: {task}')
         context = self._create_context(f'Leadership: {task}')
@@ -385,7 +386,7 @@ class ContinuousThinkingEngine:
                     if not sibling.is_blocked():
                         self.current_context_stack.pop()
                         self.current_context_stack.append(sibling_id)
-                        self.context_switches.append((from_context.id, sibling_id, datetime.now()))
+                        self.context_switches.append((from_context.id, sibling_id, pendulum.now()))
                         self.logger.info(f'🔄 Context switch: {from_context.name} → {sibling.name}')
                         break
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Basic usage example for deep_reasoner"""
+"""Basic usage example for memcore"""
 
-from deep_reasoner import DeepReasoner
+from memcore import DeepReasoner
 
 
 def main():
