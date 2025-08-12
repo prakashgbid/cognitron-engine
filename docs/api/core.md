@@ -1,3 +1,6 @@
 # Core API Reference
 
-::: deep_reasoner.core
+::: cognitron.core
+    options:
+      show_source: true
+      show_bases: true
